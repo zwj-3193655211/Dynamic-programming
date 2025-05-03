@@ -1,0 +1,1127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dynamic_Programming</class>
+ <widget class="QMainWindow" name="Dynamic_Programming">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>939</width>
+    <height>762</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>动态规划演示</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="1" column="2">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>919</width>
+         <height>722</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="2">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QStackedWidget" name="pages">
+            <property name="styleSheet">
+             <string notr="true">background-color: #27292d;
+</string>
+            </property>
+            <property name="currentIndex">
+             <number>3</number>
+            </property>
+            <widget class="QWidget" name="page">
+             <widget class="QLabel" name="label">
+              <property name="geometry">
+               <rect>
+                <x>9</x>
+                <y>9</y>
+                <width>72</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>矩阵连乘问题</string>
+              </property>
+             </widget>
+             <widget class="QWidget" name="formLayoutWidget">
+              <property name="geometry">
+               <rect>
+                <x>190</x>
+                <y>0</y>
+                <width>501</width>
+                <height>611</height>
+               </rect>
+              </property>
+              <layout class="QFormLayout" name="formLayout">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>最小次数表</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QTableWidget" name="m_table">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>断点设置表</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QTableWidget" name="s_table">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="gridLayoutWidget">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>30</y>
+                <width>131</width>
+                <height>581</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="2">
+                <widget class="QLineEdit" name="matrix_count_input">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    font-size: 14px; /* 字体大小 */
+    height: 40px; /* 固定高度 */
+    width:50px;
+}</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>在这输入矩阵个数</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="QPushButton" name="calculate_btn">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>开始计算</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QPushButton" name="generate_table_btn">
+                 <property name="text">
+                  <string>确认</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>按顺序输入矩阵规格</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QTableWidget" name="matrix_dim_table">
+                 <property name="minimumSize">
+                  <size>
+                   <width>121</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_4">
+             <widget class="QWidget" name="gridLayoutWidget_3">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>711</width>
+                <height>651</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_7">
+               <item row="7" column="1" colspan="2">
+                <widget class="QLabel" name="label_11">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>最长子序列为:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="3">
+                <widget class="QTableWidget" name="tableWidget">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>最长子序列长度为:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2" colspan="3">
+                <widget class="QLineEdit" name="length">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    font-size: 14px; /* 字体大小 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" colspan="4">
+                <widget class="QLineEdit" name="input1">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请在此输入序列1</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" colspan="4">
+                <widget class="QLineEdit" name="input2">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请在此输入序列2</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1" colspan="2">
+                <widget class="QTextEdit" name="StringOutput">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>166</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QTextEdit {
+    font-size: 14px; /* 字体大小 */
+    size:100*40
+}</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="3">
+                <widget class="QLabel" name="label_5">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>计算表格</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>最长公共子序列</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1" colspan="3">
+                <widget class="QPushButton" name="Start">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>开始计算</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_5">
+             <widget class="QWidget" name="gridLayoutWidget_2">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>703</width>
+                <height>651</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_2">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>0/1背包问题</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>物品信息表</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>80</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="7" column="3" colspan="10">
+                <widget class="QTableWidget" name="calculating_table">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0" rowspan="2">
+                <widget class="QTableWidget" name="items_table">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="8" colspan="2">
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="6" column="1" rowspan="2">
+                <widget class="QPushButton" name="Start_2">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    min-height: 80px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>开始计算 </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="10">
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="0" colspan="6">
+                <widget class="QLineEdit" name="item_num">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请输入物品数量</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2">
+                <widget class="QLabel" name="label_15">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>最佳组合为：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QLabel" name="label_8">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>最大价值为：</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="5" colspan="7" alignment="Qt::AlignmentFlag::AlignRight">
+                <widget class="QLabel" name="label_16">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>计算表格</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="12">
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="7" column="2">
+                <widget class="QTextEdit" name="plan_output">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="4">
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>80</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="4" column="12">
+                <spacer name="horizontalSpacer_7">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>150</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="4" column="4" colspan="7">
+                <widget class="QLineEdit" name="max_value">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0" colspan="6">
+                <widget class="QLineEdit" name="package_max">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请输入背包容量</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="8" rowspan="2" colspan="3">
+                <widget class="QPushButton" name="define">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>确定</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_3">
+             <widget class="QWidget" name="gridLayoutWidget_4">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>711</width>
+                <height>651</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_8">
+               <item row="5" column="1" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>最大子段和为:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLabel" name="label_17">
+                 <property name="text">
+                  <string>最大子段和问题</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="3" colspan="2">
+                <widget class="QTableWidget" name="table_max">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_12">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>最长子序列</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="3" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_14">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>计算表格</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" colspan="4">
+                <widget class="QLineEdit" name="input_arr">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请在此输入数列</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1" colspan="4">
+                <widget class="QPushButton" name="Start_3">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>开始计算</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="4">
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="5" column="2" colspan="2">
+                <widget class="QLineEdit" name="max_sum">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    font-size: 14px; /* 字体大小 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1" colspan="2">
+                <widget class="QTextEdit" name="putout_str">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>166</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QTextEdit {
+    font-size: 14px; /* 字体大小 */
+    size:100*40
+}</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_2">
+             <widget class="QWidget" name="gridLayoutWidget_5">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>711</width>
+                <height>651</height>
+               </rect>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_9">
+               <item row="1" column="1" colspan="2">
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>凸多边形最优三角划分</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" colspan="5">
+                <widget class="QPushButton" name="defined">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>确认</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="5">
+                <widget class="QPushButton" name="Start_4">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 80px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>开始计算</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" colspan="5">
+                <widget class="QLineEdit" name="dot_num">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    min-height: 40px; /* 最小高度 30 像素 */
+    font: bold 12pt &quot;微软雅黑&quot;; 
+}</string>
+                 </property>
+                 <property name="placeholderText">
+                  <string>请在此输入顶点数</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>最小权值和为:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2" colspan="3">
+                <widget class="QLineEdit" name="min_sum">
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+    font-size: 14px; /* 字体大小 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1" colspan="4">
+                <widget class="QTableWidget" name="input_weight">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(167, 167, 167)/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(40, 40, 40); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}; /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1" colspan="4">
+                <widget class="QTableWidget" name="table_min">
+                 <property name="styleSheet">
+                  <string notr="true">/* 定义垂直滑动条滑块样式 */
+QScrollBar::handle:vertical {
+    background: rgb(31, 31, 31); /* 滑块颜色，可替换为其他颜色值（如 #FF5722 橙色） */
+    border: 2px solid #333; /* 滑块边框 */
+    border - radius: 5px; /* 滑块圆角 */
+}
+
+/* 定义垂直滑动条槽（轨道）样式 */
+QScrollBar::groove:vertical {
+    background: rgb(150, 150, 150); /* 槽颜色，可替换为其他深色值（如 #333333） */
+    border - radius: 5px; /* 槽圆角 */
+}</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="5" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>连线情况</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="5">
+                <widget class="QTextEdit" name="output_connection">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="4">
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="4" column="1" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_20">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>各边权值</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1" colspan="2">
+                <widget class="QLabel" name="label_21">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>计算表格</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="Q1">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+            </property>
+            <property name="text">
+             <string>矩阵连乘问题</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Q2">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+            </property>
+            <property name="text">
+             <string>最长公共子序列问题</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Q3">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+            </property>
+            <property name="text">
+             <string>0/1 背包问题</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Q4">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+            </property>
+            <property name="text">
+             <string>最大子段和问题</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Q5">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    font-size: 14px; /* 字体大小 */
+    padding: 8px 16px; /* 内边距，让按钮内容更饱满 */
+    height: 40px; /* 固定高度 */
+}</string>
+            </property>
+            <property name="text">
+             <string>凸多边形最优三角划分</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+   <widget class="QWidget" name="verticalWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>97</x>
+      <y>329</y>
+      <width>88</width>
+      <height>319</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
