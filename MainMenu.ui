@@ -749,7 +749,7 @@ QScrollBar::groove:vertical {
 }</string>
                  </property>
                  <property name="text">
-                  <string>最长子序列</string>
+                  <string>最大子序列</string>
                  </property>
                 </widget>
                </item>
